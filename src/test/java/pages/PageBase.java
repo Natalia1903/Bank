@@ -10,7 +10,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import tests.ApplicationManager;
-import wait.Wait;
 
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
@@ -20,7 +19,6 @@ import java.util.Arrays;
 public class PageBase {
     public WebDriver driver;
 
-    Wait wait;
 
     public PageBase(WebDriver driver) {
         this.driver = driver;
@@ -28,14 +26,12 @@ public class PageBase {
     }
 
     public void click(WebElement element) {
-        wait.forVisibility(element);
         element.click();
     }
 
     public void selectOption(String optionName, WebElement selectElement) {
         Select select = new Select(selectElement);
         select.selectByVisibleText(optionName);
-
     }
 
     public void fillField(WebElement field, String text) {
@@ -74,7 +70,5 @@ public class PageBase {
 
             logger.info("=========================================================================");
         }
-
-
     }
 }
